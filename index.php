@@ -1,4 +1,7 @@
 <?php 
+    //kiểm tra trạng thái điền form
+    $check_form = $_GET['status'];if(!$check_form){$check_form = '';}
+
     $site_url   = '';
     $site_title = 'Thẩm Mỹ Trà Ly';
     $site_desc  = 'Thẩm Mỹ Trà Ly';
@@ -635,7 +638,43 @@
         }
     </style>
 
-    
+        <?php if($check_form == 'success'): ?>
+        <div class="pop_regkn_1_3_0" id="pop-success">
+            <div class="pop_regkn_1_3_0__box" id="reg-box">
+                <div class="pop_regkn_1_3_0__close" onclick="close_popup()"  id="success-close">×</div>
+                <div class="pop_regkn_1_3_0__logo">
+                    <img width="300" height="110" src="./assets/images/logo.svg" alt="">
+                </div>
+                <div class="pop_regkn_1_3_0__des">
+                    <p>Đăng Ký Thành Công<br/>Chúng Tôi sẽ liên hệ với bạn trong thời gian sớm nhất!</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            function close_popup(){
+                document.getElementById("pop-success").setAttribute('style','display:none!important;');
+            }
+        </script>
+        <?php endif; ?>
+
+        <?php if($check_form == 'failed'): ?>
+        <div class="pop_regkn_1_3_0" id="pop-failed">
+            <div class="pop_regkn_1_3_0__box" id="reg-box">
+                <div class="pop_regkn_1_3_0__close" onclick="close_popup()" id="failed-close">×</div>
+                <div class="pop_regkn_1_3_0__logo">
+                    <img width="300" height="110" src="./assets/images/logo.svg" alt="">
+                </div>
+                <div class="pop_regkn_1_3_0__des">
+                    <p>Lỗi Đăng Ký<br/>Hãy liên hệ với chúng tôi qua hotline <a style="color:red;" href="tel:<?php echo $hotline ?>"><?php echo $hotline ?></a> để được hỗ trợ!</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            function close_popup(){
+                document.getElementById("pop-failed").setAttribute('style','display:none!important;');
+            }
+        </script>
+        <?php endif; ?>
 </body>
 
 </html>
